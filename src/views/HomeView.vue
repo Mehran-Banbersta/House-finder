@@ -213,6 +213,9 @@ export default {
     position: relative;
     max-width: 90%;
   }
-  /* Your styles here */
+  
+  .create-btn {
+  font-size: var(--font-size-buttons-mobile);
+}
 }
 </style>
