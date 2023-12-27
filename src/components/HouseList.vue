@@ -29,13 +29,13 @@
           <!-- delete icon -->
 
           <!-- Show delete icon only if showIcons prop is true -->
-          <router-lin>
+          <router-link>
             v-if="showIcons"
             :to="{ name: 'HouseDeleteView', params: { id: house.id } }"
             class="custom-link"
           >
             <font-awesome-icon class="delete-button" icon="fa-solid fa-trash" />
-          </router-lin>
+          </router-link>
 
           <!-- pen icon -->
         </div>
