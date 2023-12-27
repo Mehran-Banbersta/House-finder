@@ -1,31 +1,31 @@
 <!-- create house -->
 
 <template>
-  <div className="create-house-container">
+  <div class="create-house-container">
     <form @submit.prevent="createPost" class="form">
       <router-link :to="'/'">
-        <a className="back-overview">&lt; Back to overview</a>
+        <a class="back-overview">&lt; Back to overview</a>
       </router-link>
 
       <h2 className="create-house-heading">Create new listing</h2>
       <!-- Street name -->
-      <div className="div-1">
+      <div class="div-1">
         <label for="street">Street name</label>
         <input
           id="street"
-          className="create-house-input"
+          class="create-house-input"
           type="text"
           placeholder="Enter the street name"
           v-model="formData.street"
         />
       </div>
       <!-- House number -->
-      <div className="div-2">
+      <div class="div-2">
         <div class="house-number">
           <label for="houseNumber">House number</label>
           <input
             id="houseNumber"
-            className="create-house-input"
+            class="create-house-input"
             type="text"
             placeholder="Enter the House number"
             v-model="formData.houseNumber"
@@ -36,7 +36,7 @@
           <label for="houseNumberAddition">Addition(optional)</label>
           <input
             id="houseNumberAddition"
-            className="create-house-input"
+            class="create-house-input"
             type="text"
             placeholder="e.g A "
             v-model="formData.houseNumberAddition"
@@ -48,7 +48,7 @@
         <label for="zip">Postal code</label>
         <input
           id="zip"
-          className="create-house-input"
+          class="create-house-input"
           type="text"
           placeholder="e.g. 1000 AA"
           v-model="formData.zip"
@@ -59,7 +59,7 @@
         <label for="city">City</label>
         <input
           id="city"
-          className="create-house-input"
+          class="create-house-input"
           type="text"
           placeholder="E.g. Utrecht"
           v-model="formData.city"
@@ -85,19 +85,19 @@
         <label for="price">Price</label>
         <input
           id="price"
-          className="create-house-input"
+          class="create-house-input"
           type="text"
           placeholder="E.g. $150.000"
           v-model="formData.price"
         />
       </div>
       <!--  -->
-      <div className="div-2">
+      <div class="div-2">
         <div class="house-number">
           <label for="size">Size</label>
           <input
             id="size"
-            className="create-house-input"
+            class="create-house-input"
             type="text"
             placeholder="e.g. 60m2"
             v-model="formData.size"
@@ -106,7 +106,7 @@
         <!--garage-->
         <div class="addition">
           <label for="hasGarage">Garage</label>
-          <select className="garage-option" id="hasGarage" name="garage">
+          <select class="garage-option" id="hasGarage" name="garage">
             <option value="no">No Garage</option>
             <option value="attached">Attached Garage</option>
             <option value="detached">Detached Garage</option>
@@ -115,12 +115,12 @@
         </div>
       </div>
       <!--  -->
-      <div className="div-2">
+      <div class="div-2">
         <div class="house-number">
           <label for="bedrooms">Bedrooms</label>
           <input
             id="bedrooms"
-            className="create-house-input"
+            class="create-house-input"
             type="text"
             placeholder="Enter amount"
             v-model="formData.rooms.bedrooms"
@@ -131,7 +131,7 @@
           <label for="bathrooms">Bathrooms</label>
           <input
             id="bathrooms"
-            className="create-house-input"
+            class="create-house-input"
             type="text"
             placeholder="Enter amount "
             v-model="formData.rooms.bathrooms"
@@ -143,14 +143,14 @@
         <label for="createdAt">Construction date</label>
         <input
           id="createdAt"
-          className="create-house-input"
+          class="create-house-input"
           type="text"
           placeholder="e.g 1990"
           v-model="formData.createdAt"
         />
       </div>
       <!--  -->
-      <div className="div-1">
+      <div class="div-1">
         <label for="description">Description</label>
         <textarea
           id="description"

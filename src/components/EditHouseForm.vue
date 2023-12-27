@@ -6,7 +6,7 @@
         <!-- Update form -->
         <form @submit.prevent="updateHouse" class="form">
           <!-- Street name -->
-          <div className="div-1">
+          <div class="div-1">
             <label for="street">Street name</label>
             <input
               id="street"
@@ -16,12 +16,12 @@
             />
           </div>
           <!-- House number -->
-          <div className="div-2">
+          <div class="div-2">
             <div class="house-number">
               <label for="houseNumber">House number</label>
               <input
                 id="houseNumber"
-                className="create-house-input"
+                class="create-house-input"
                 type="text"
                 v-model="editedHouse.location.houseNumber"
               />
@@ -31,7 +31,7 @@
               <label for="houseNumberAddition">Addition(optional)</label>
               <input
                 id="houseNumberAddition"
-                className="create-house-input"
+                class="create-house-input"
                 type="text"
                 v-model="editedHouse.location.houseNumberAddition"
               />
@@ -42,7 +42,7 @@
             <label for="zip">Postal code</label>
             <input
               id="zip"
-              className="create-house-input"
+              class="create-house-input"
               type="text"
               v-model="editedHouse.location.zip"
             />
@@ -52,7 +52,7 @@
             <label for="city">City</label>
             <input
               id="city"
-              className="create-house-input"
+              class="create-house-input"
               type="text"
               v-model="editedHouse.location.city"
             />
@@ -82,18 +82,18 @@
             <label for="price">Price</label>
             <input
               id="price"
-              className="create-house-input"
+              class="create-house-input"
               type="text"
               v-model="editedHouse.price"
             />
           </div>
           <!--  -->
-          <div className="div-2">
+          <div class="div-2">
             <div class="house-number">
               <label for="size">Size</label>
               <input
                 id="size"
-                className="create-house-input"
+                class="create-house-input"
                 type="text"
                 v-model="editedHouse.size"
               />
@@ -101,7 +101,7 @@
             <!--garage-->
             <div class="addition">
               <label for="hasGarage">Garage</label>
-              <select className="garage-option" id="hasGarage" name="garage">
+              <select class="garage-option" id="hasGarage" name="garage">
                 <option value="no">No Garage</option>
                 <option value="attached">Attached Garage</option>
                 <option value="detached">Detached Garage</option>
@@ -110,12 +110,12 @@
             </div>
           </div>
           <!--  -->
-          <div className="div-2">
+          <div class="div-2">
             <div class="house-number">
               <label for="bedrooms">Bedrooms</label>
               <input
                 id="bedrooms"
-                className="create-house-input"
+                class="create-house-input"
                 type="text"
                 v-model="editedHouse.rooms.bedrooms"
               />
@@ -125,24 +125,24 @@
               <label for="bathrooms">Bathrooms</label>
               <input
                 id="bathrooms"
-                className="create-house-input"
+                class="create-house-input"
                 type="text"
                 v-model="editedHouse.rooms.bathrooms"
               />
             </div>
           </div>
           <!--  -->
-          <div className="div-1">
+          <div class="div-1">
             <label for="createdAt">Construction date</label>
             <input
               id="createdAt"
-              className="create-house-input"
+              class="create-house-input"
               type="text"
               v-model="editedHouse.createdAt"
             />
           </div>
           <!--  -->
-          <div className="description">
+          <div class="description">
             <label for="description">Description</label>
             <textarea
               id="description"
