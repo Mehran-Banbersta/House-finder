@@ -29,7 +29,7 @@
           <!-- delete icon -->
 
           <!-- Show delete icon only if showIcons prop is true -->
-          <router-link>
+          <router-link
             v-if="showIcons"
             :to="{ name: 'HouseDeleteView', params: { id: house.id } }"
             class="custom-link"
@@ -197,7 +197,7 @@ h2.house-items-price {
   margin-left: 0.8rem;
   transform: scale(1);
   transition: transform 0.25s ease;
-  width: 14px; 
+  width: 14px;
   height: 15px;
   cursor: pointer;
 }
