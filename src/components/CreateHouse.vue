@@ -7,7 +7,7 @@
         <a class="back-overview">&lt; Back to overview</a>
       </router-link>
 
-      <h2 className="create-house-heading">Create new listing</h2>
+      <h2 class="create-house-heading">Create new listing</h2>
       <!-- Street name -->
       <div class="div-1">
         <label for="street">Street name</label>
@@ -172,11 +172,11 @@
 
 <script>
 import { mapActions } from 'vuex'
+
 const apiKeyCode = import.meta.env.VITE_APP_API_KEY
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
 
 import axios from 'axios'
-import { ErrorTypes } from 'vue-router'
 
 export default {
   name: 'CreatePost',
@@ -192,7 +192,7 @@ export default {
         city: '',
         price: '',
         size: '',
-        hasGarage: false, 
+        hasGarage: false,
         rooms: {
           bedrooms: '',
           bathrooms: ''
@@ -203,7 +203,7 @@ export default {
       },
       fileTypeError: null,
       uploadedImageUrl: '',
-      houseDetails: {} 
+      houseDetails: {}
     }
   },
   methods: {
@@ -215,10 +215,10 @@ export default {
       const allowedTypes = ['image/jpeg', 'image/png']
       if (!allowedTypes.includes(file.type)) {
         this.fileTypeError = 'Please upload a valid PNG or JPG image.'
-        this.uploadedImageUrl = '' 
+        this.uploadedImageUrl = ''
       } else {
         this.fileTypeError = null
-        this.uploadedImageUrl = '' 
+        this.uploadedImageUrl = ''
         const reader = new FileReader()
         reader.onload = () => {
           this.uploadedImageUrl = reader.result
@@ -228,12 +228,11 @@ export default {
     },
 
     async createPost() {
-    
       try {
         const formData = new FormData()
         formData.append('image', this.formData.image)
         console.log(formData)
-        
+
         formData.append('price', this.formData.price)
         formData.append('bedrooms', this.formData.rooms.bedrooms)
         formData.append('bathrooms', this.formData.rooms.bathrooms)
@@ -250,11 +249,11 @@ export default {
         const response = await this.$store.dispatch('createHouse', formData)
 
         if (response && response.data) {
-          this.houseDetails = response.data 
+          this.houseDetails = response.data
           console.log('House created:', this.houseDetails)
-        
+
           this.uploadedImageUrl = this.houseDetails.image
-        
+
           this.showSuccessMessage = true
           this.successMessage = 'House created'
         } else {
@@ -271,7 +270,6 @@ export default {
       const fd = new formData()
       fd.append('image', this.selectedFile, this.selectedFile.name)
       try {
-      
         const response = await axios.post(`${apiBaseUrl}/api/houses/${houseId}/upload`, fd, {
           headers: {
             'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
@@ -280,7 +278,6 @@ export default {
         })
 
         console.log('Image uploaded successfully:', response.data)
-        
       } catch (error) {
         console.error('Error uploading image:', error)
         throw ErrorTypes
@@ -291,7 +288,6 @@ export default {
 </script>
 
 <style>
-
 .create-house-container {
   position: relative;
   height: 120vh;
@@ -299,7 +295,6 @@ export default {
   background-size: cover;
   background-clip: content-box, border-box;
 }
-
 
 .create-house-container::after {
   content: '';
