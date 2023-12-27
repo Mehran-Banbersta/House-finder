@@ -58,7 +58,7 @@ export default {
         this.showSizeDropdown = false
       } else if (option === 'size') {
         this.showSizeDropdown = !this.showSizeDropdown
-        this.showPriceDropdown = false 
+        this.showPriceDropdown = false
       }
     },
     selectSortingOption(option, min, max) {
@@ -75,7 +75,6 @@ export default {
 }
 </script>
 <style>
-
 .sorting-buttons-container {
   width: 260px;
 }
@@ -147,6 +146,10 @@ export default {
     left: 16rem;
     width: 260px;
   }
-}
 
+  .price-sorting-button,
+  .size-sorting-button {
+    font-size: var(--font-size-buttons-mobile);
+  }
+}
 </style>
