@@ -9,8 +9,8 @@
       class="search-input"
       id="back-home"
     />
-    <button @click="goBackHome" class="back-home-button">x</button>
-    <!-- Display with search results -->
+    <button v-if="searchQuery" @click="goBackHome" class="back-home-button">x</button>
+    
   </div>
 </template>
 
