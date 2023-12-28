@@ -39,7 +39,6 @@
       search
     </p>
 
-    
     <!-- no-search-results-found -->
     <div v-else>
       <div
@@ -54,7 +53,7 @@
             alt=""
           />
           <p>No result found</p>
-          <p>Please try another keyword</p>
+          <p>Please try another keyword!</p>
         </div>
       </div>
     </div>
@@ -202,7 +201,12 @@ export default {
   text-align: center;
 }
 
-.no-search-results-found-message-img img{
+.no-search-results-found-message-img p {
+  color: var(--text-secondary);
+  font-size: var(--font-size-empty-state-desktop);
+}
+
+.no-search-results-found-message-img img {
   padding-bottom: 2rem;
 }
 
