@@ -29,6 +29,8 @@
         </p>
       </div>
     </div>
+
+    <!-- search-results-message -->
     <p
       v-if="searchQuery && filteredHouses.length > 0 && !isSelectingResult"
       class="search-results-message"
@@ -36,14 +38,32 @@
       {{ filteredHousesCount }} result{{ filteredHousesCount !== 1 ? 's' : '' }} found in your
       search
     </p>
-    <p
-      v-else-if="searchQuery && filteredHouses.length === 0 && !isSelectingResult"
-      class="no-results-message"
-    >
-      No results found
-    </p>
-    <div v-if="searchResult" class="search-result">
-      <HouseList :house="searchResult" @addToFavorite="addToFavorite(searchResult)" />
+
+    
+    <!-- no-search-results-found -->
+    <div v-else>
+      <div
+        v-if="searchQuery && filteredHouses.length === 0 && !isSelectingResult"
+        class="no-search-results-found"
+      >
+        <div class="no-search-results-found-message-img">
+          <img
+            width="260px"
+            height="140px"
+            src="../components/icons/img_empty_houses@3x.png"
+            alt=""
+          />
+          <p>No result found</p>
+          <p>Please try another keyword</p>
+        </div>
+      </div>
+    </div>
+    <!-- Render the search results or houses if available -->
+
+    <div v-if="searchResult">
+      <div class="search-result">
+        <HouseList :house="searchResult" @addToFavorite="addToFavorite(searchResult)" />
+      </div>
     </div>
 
     <div v-else-if="houses.length > 0 || filteredHouses.length > 0">
@@ -119,7 +139,7 @@ export default {
     },
     handleSearchQueryUpdated(query) {
       this.searchQuery = query
-      this.updateFilteredHouses() 
+      this.updateFilteredHouses()
     },
     updateFilteredHouses() {
       console.log('Updating filtered houses...')
@@ -166,10 +186,26 @@ export default {
   font-size: var(--font-size-h1-desktop);
 }
 
+.no-search-results-found {
+  display: flex;
+  justify-content: center;
+  padding-top: 3rem;
+  padding-bottom: 17rem;
+}
+
 .sorting-buttons-message {
   font-size: var(--font-size-listing-information-desktop);
   margin-bottom: 1rem;
 }
+
+.no-search-results-found-message-img {
+  text-align: center;
+}
+
+.no-search-results-found-message-img img{
+  padding-bottom: 2rem;
+}
+
 .top-nav {
   margin: 1.2rem 0;
 }
@@ -213,9 +249,9 @@ export default {
     position: relative;
     max-width: 90%;
   }
-  
+
   .create-btn {
-  font-size: var(--font-size-buttons-mobile);
-}
+    font-size: var(--font-size-buttons-mobile);
+  }
 }
 </style>
