@@ -5,6 +5,12 @@
       <a className="back-overview">&lt; Back to overview</a>
     </router-link>
     <div class="house-detail-components">
+      <CustomPopup
+        v-if="showDeletePopup"
+        :isVisible="showDeletePopup"
+        message="Are you sure you want to delete this house? "
+        @back="closePopup"
+      />
       <HouseDetail v-if="getHouseDetails" :house="getHouseDetails[0]" />
 
       <div v-else>
@@ -17,15 +23,27 @@
 <script>
 import { mapGetters } from 'vuex'
 import HouseDetail from '../components/HouseDetail.vue'
+import CustomPopup from '../components/CustomPopup.vue'
 
 export default {
   name: 'HouseDetailView',
   components: {
-    HouseDetail
+    HouseDetail,
+    CustomPopup
   },
   computed: {
     ...mapGetters(['getHouseDetails', 'getHouses'])
   },
+  data() {
+    return {
+      showDeletePopup: true
+    }
+  },
+
+  setup() {
+    
+  },
+
   mounted() {
     const houseId = this.$route.params.id
     if (houseId) {
@@ -35,6 +53,11 @@ export default {
   methods: {
     deleteHouse(id) {
       console.log(`Deleting house with ID: ${id}`)
+      this.showDeletePopup = true
+    },
+
+    closePopup() {
+      this.showDeletePopup = true
     }
   }
 }
