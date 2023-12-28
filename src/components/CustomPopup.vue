@@ -3,7 +3,8 @@
   <div v-if="isVisible" class="custom-popup">
     <div class="popup-content">
       <p>{{ message }}</p>
-      <button @click="closePopup">Close</button>
+      <button @click="closePopup">GO BACK</button>
+      <button @click="deleteHouse">YES DELETE</button>
     </div>
   </div>
 </template>
