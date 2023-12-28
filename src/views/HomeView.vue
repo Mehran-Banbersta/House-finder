@@ -40,23 +40,11 @@
     </p>
 
     <!-- no-search-results-found -->
-    <div v-else>
-      <div
-        v-if="searchQuery && filteredHouses.length === 0 && !isSelectingResult"
-        class="no-search-results-found"
-      >
-        <div class="no-search-results-found-message-img">
-          <img
-            width="260px"
-            height="140px"
-            src="../components/icons/img_empty_houses@3x.png"
-            alt=""
-          />
-          <p>No result found</p>
-          <p>Please try another keyword!</p>
-        </div>
-      </div>
-    </div>
+    <NoSearchResult
+      :searchQuery="searchQuery"
+      :filteredHouses="filteredHouses"
+      :isSelectingResult="isSelectingResult"
+    />
     <!-- Render the search results or houses if available -->
 
     <div v-if="searchResult">
@@ -86,6 +74,7 @@
 import HouseList from '../components/HouseList.vue'
 import SortingButtons from '../components/SortingButtons.vue'
 import HouseSearch from '../components/HouseSearch.vue'
+import NoSearchResult from '@/components/NoSearchResult.vue'
 
 import { mapState } from 'vuex'
 import { ref } from 'vue'
@@ -95,7 +84,8 @@ export default {
   components: {
     HouseList,
     SortingButtons,
-    HouseSearch
+    HouseSearch,
+    NoSearchResult
   },
 
   computed: {
@@ -195,19 +185,6 @@ export default {
 .sorting-buttons-message {
   font-size: var(--font-size-listing-information-desktop);
   margin-bottom: 1rem;
-}
-
-.no-search-results-found-message-img {
-  text-align: center;
-}
-
-.no-search-results-found-message-img p {
-  color: var(--text-secondary);
-  font-size: var(--font-size-empty-state-desktop);
-}
-
-.no-search-results-found-message-img img {
-  padding-bottom: 2rem;
 }
 
 .top-nav {
