@@ -43,7 +43,6 @@ export default {
   },
   methods: {
     getRecommendedHouses() {
-      
       if (this.getHouses && this.getHouseDetails && this.getHouseDetails.length === 1) {
         const currentHouse = this.getHouseDetails[0]
         console.log('Current House:', currentHouse)
@@ -51,8 +50,8 @@ export default {
         const recommendedHouses = this.getHouses.filter((house) => {
           const priceDifference = Math.abs(currentHouse.price - house.price)
           const sizeDifference = Math.abs(currentHouse.size - house.size)
-          
-          return priceDifference < 50000 && sizeDifference < 20 
+
+          return priceDifference < 200000 && sizeDifference < 20
         })
 
         console.log('Recommended Houses:', recommendedHouses)
@@ -71,8 +70,6 @@ export default {
   margin: 0 auto;
 }
 
-
-
 .house-detail-components {
   display: flex;
   justify-content: space-between;
@@ -81,7 +78,6 @@ export default {
 .house-detail-items {
   background-color: var(--background-color-2);
 }
-
 
 @media only screen and (max-width: 600px) {
   .house-detail-container {
