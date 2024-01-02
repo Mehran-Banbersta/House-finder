@@ -7,6 +7,15 @@
         <h2>{{ house.location?.street }}</h2>
 
         <div class="router-links-edit-delete">
+          <!--  addToFavorite -->
+          <div v-if="showIcons">
+            <font-awesome-icon
+              @click="addToFavorite(house)"
+              class="favorite-icon"
+              :class="{ 'favorite-icon': true, favorited: isInFavorite(house) }"
+              icon="far fa-heart"
+            ></font-awesome-icon>
+          </div>
           <!-- edit-button -->
           <router-link
             :to="{ name: 'EditHouseView', params: { id: house.id } }"
