@@ -37,7 +37,7 @@
             <font-awesome-icon class="delete-button" icon="fa-solid fa-trash" />
           </router-link>
 
-          <!-- pen icon -->
+        
         </div>
       </div>
       <div className="price-zip-city">
