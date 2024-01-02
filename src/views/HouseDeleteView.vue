@@ -8,10 +8,14 @@
       <CustomPopup
         v-if="showDeletePopup"
         :isVisible="showDeletePopup"
-        message="Are you sure you want to delete this house? "
-        @back="closePopup"
+        @action="handlePopupAction"
       />
       <HouseDetail v-if="getHouseDetails" :house="getHouseDetails[0]" />
+
+      <HouseRecommendation
+        v-if="recommendedHouses.length > 0"
+        :recommendedHouses="recommendedHouses"
+      />
 
       <div v-else>
         <p>Loading...</p>
@@ -25,39 +29,72 @@ import { mapGetters } from 'vuex'
 import HouseDetail from '../components/HouseDetail.vue'
 import CustomPopup from '../components/CustomPopup.vue'
 
+import HouseRecommendation from '../components/HouseRecommendation.vue'
+
 export default {
   name: 'HouseDetailView',
   components: {
     HouseDetail,
-    CustomPopup
+    CustomPopup,
+    HouseRecommendation
   },
   computed: {
-    ...mapGetters(['getHouseDetails', 'getHouses'])
+    ...mapGetters(['getHouseDetails', 'getHouses']),
+    recommendedHouses() {
+      return this.getRecommendedHouses()
+    }
   },
   data() {
     return {
-      showDeletePopup: true
+      showDeletePopup: true,
+      houseIdToDelete: null
     }
-  },
-
-  setup() {
-    
   },
 
   mounted() {
     const houseId = this.$route.params.id
     if (houseId) {
       this.$store.dispatch('fetchHouseDetails', houseId)
+      this.houseIdToDelete = houseId
     }
   },
   methods: {
-    deleteHouse(id) {
-      console.log(`Deleting house with ID: ${id}`)
-      this.showDeletePopup = true
+    getRecommendedHouses() {
+      
+      if (this.getHouses && this.getHouseDetails && this.getHouseDetails.length === 1) {
+        const currentHouse = this.getHouseDetails[0]
+        console.log('Current House:', currentHouse)
+
+        const recommendedHouses = this.getHouses.filter((house) => {
+          const priceDifference = Math.abs(currentHouse.price - house.price)
+          const sizeDifference = Math.abs(currentHouse.size - house.size)
+          
+          return priceDifference < 50000 && sizeDifference < 20 
+        })
+
+        console.log('Recommended Houses:', recommendedHouses)
+        return recommendedHouses
+      }
+
+      return []
+    },
+    handlePopupAction(action) {
+      //handel popups action
+      if (action === 'back') {
+        this.showDeletePopup = false
+      } else if (action === 'delete') {
+        // Handle 'delete' action
+        this.deleteHouse()
+      }
     },
 
-    closePopup() {
-      this.showDeletePopup = true
+    deleteHouse() {
+      if (this.houseIdToDelete) {
+        if (this.showDeletePopup) {
+          this.$store.dispatch('deleteHose', this.houseIdToDelete)
+          this.showDeletePopup = false
+        }
+      }
     }
   }
 }
